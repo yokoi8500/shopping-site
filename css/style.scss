@@ -1,5 +1,5 @@
 @charset "utf-8";
-
+@import "compass";
 html {
 font-size: 62.5%;
 }
@@ -10,32 +10,67 @@ font-size: ($size / $base) * 1rem;
 }
 
 $ja_font : "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", メイリオ, Verdana, "ＭＳ Ｐゴシック", sans-serif;
-$basecolor:#ccc; //#f9f8f6; //薄いグレー
+$basecolor:#f9f8f6; //#ccc; //#f9f8f6; //薄いグレー
 $sub-basecolor:#fff; //白
 $keycolor:#887f69; //ブラウン
-//#e2ddd4
-//#b0b0b0
-//#9d1a2d
+$keycolor2:#e2ddd4;//薄いブラウン
+$gray-color:#b0b0b0;
+$red-color:#9d1a2d;
 
 .clearfix::after {
     content: '';
     display: block;
     clear: both;
+  @include fontsize(12);
 }
-/*
+
+*{
+  box-sizing:border-box;
+}
+
+h3{
+  @include fontsize(20);
+  color:$keycolor;
+  //font-weight:bold;
+}
+h4{
+  @include fontsize(18);
+  color:$keycolor;
+  //font-weight:bold;
+}
+
+a{
+  text-decoration:none;
+  color:#000;
+}
+
+.text-center{
+    text-align: center;
+}
+.text-right{
+    text-align: right;
+}
+
+@media (min-width: 550px){
+.column, .columns {
+    margin-left: 2%;
+}
+}
+
+
 body{
-      width:960px;
-      margin-left:auto;
-      margin-right:auto;
+     // width:960px;
+    //  margin-left:auto;
+    //  margin-right:auto;
+    background:$basecolor;
     }
-*/    
 
 /*
 headder
 *************************************/
 
 header{
-  background: $basecolor;
+  //ackground: $basecolor;
   
   #header_in{
     padding-top: 10px;
@@ -47,11 +82,7 @@ header{
   //PC用対応----------------------------
   @media (min-width: 550px) {
   
-    //非表示の設定
-    .sp_navi {
-      display:none;
-    }
-    
+
     .logo{
       //background:#f00;
       //diaplay:inline;
@@ -92,34 +123,527 @@ header{
   //スマートフォン対応----------------------------
   @media (max-width: 550px) {
 
-    .pc_navi {
-      display:none;
+    .logo{
+      //background:#f00;
+      //diaplay:inline;
+      padding-bottom:0px;
     }
+    h1{
+      text-align: center;
+    }
+    
+    .sp_navi_li{
+
+      margin:0;
+      padding:0;
+      li{
+        display:inline;
+        list-style:none;
+        margin: 5px 10px 0 0;
+        padding: 0;
+        img{
+          height:40px;
+        }
+      }
+      // li
+    }
+    // .sp_navi_li
+    
+    
+    .sp_sub_navi_li {
+      //margin-left:50%;
+      position:absolute; 
+      //top:150px;
+      right:12%;
+      display:none;
+      z-index:100;
+      background:$sub-basecolor;
+    }
+    .sp_sub_navi_li li {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      //display:none;
+    }
+    
+    .sp_sub_navi_li li a {
+      display: block;
+      padding: 10px 8px;
+      border: 1px solid $keycolor;
+      //font-size: 14px;
+      @include fontsize(14);
+      text-decoration: none;
+    }
+    
   }
 }
 
+/*
+breadcrumb
+************************************************/
+#breadcrumb{
+  background:$keycolor2;
+  display:flex;
+  //align-items:         baseline;  //パンくずリストのベースラインをそろえる
+  padding-top:10px;
+  padding-bottom:10px;
+  margin-bottom:10px;
+  h1{
+    @include fontsize(15);
+    margin-top:auto;
+    margin-bottom:auto;
+  }
+  div.breadcrumb-item{
+    margin-right:10px;
+    margin-left:10px;
+    margin-top:auto;
+    margin-bottom:auto;
+  }
+  img.img-home-icon{
+    margin-right:10px;
+  }
+}
+
+
+/*
+curusel
+************************************************/
+.owl-dots{
+  
+  display:flex;
+  
+  .owl-dot{
+    width:25px;
+    height:2px;
+    background:$keycolor;
+    padding:0px;
+    //border:1px solid #f00;
+    margin:5px 10px 5px 0px;
+  }
+  .owl-dot.active{
+      background:$red-color;
+  }
+}
 /*
 new-items
 ************************************************/
 
-#new-items {
+#new-items ,
+#popular{
   .container{
-    /* display:flex;
-    */
-    margin:0;
+    background:$basecolor;
+    padding:0px;
+    //display:block;
+    
+    display:flex;//flexコンテナの宣言
+    flex-wrap:wrap;//収まらない場合は改行する
+    justify-content: space-between;//flexアイテムは最初と最後のアイテムは端に、残りは等間隔で配置
+    margin:0 0 20px 0;
     width:100%;
   } 
+  .item-title h2{
+    height:30px;
+      margin-left:auto;
+      margin-right:auto;
+      margin-top:20px;
+      margin-bottomtop:10px;
+      text-align:center;
+    .img{
+    }
+  }
+
   .items{
-    width:33%;
-    border:5px solid #f00;
-    background:#ff0;
+    width:50%;
+    //min-height:300px;
+    border:1px solid $basecolor;
+    background:$sub-basecolor;
+    margin:0;//5px;
+    padding:10px;
+  }
+  
+
+  //PC用対応----------------------------
+  @media (min-width: 550px) {
+  
+    .items{
+      width:33%;
+    }
+  }
+  
+}
+
+#new-item-navi{
+  display:flex;//flexコンテナの宣言
+  flex-wrap:nowrap;//改行しない
+  justify-content: space-between;//flexアイテムは最初と最後のアイテムは端に、残りは等間隔で配置
+}
+
+
+
+
+#guide{
+  .container{
+    background:$basecolor;
+    padding:0;
+
+    margin:0 0 20px 0;
+    width:100%;
+  } 
+  
+  
+  .item-title h2{
+    height:30px;
+      margin-left:auto;
+      margin-right:auto;
+      margin-top:20px;
+      margin-bottomtop:10px;
+      text-align:center;
+    .img{
+    }
+  }
+  .items{
+    //width:33%;
+    border:1px solid $basecolor;
+    background:$sub-basecolor;
+    margin:0 0 10px 0;//5px;
+    padding:20px;
+    //PC用対応----------------------------
+    @media (min-width: 550px) {    
+      min-height:390px;
+    }
+    
+  }
+  .items:first-child{
+    border-right:5px solid $basecolor;
+  }
+  h4:before{
+    content:"■ ";
+    @include fontsize(20);
+  }
+  
+}
+
+
+/*
+sidebar
+************************************************/
+#sidebar{
+  #search{
+    background:$sub-basecolor;
+    margin-bottom:10px;
+    padding:15px 15px;
+  }
+  .search-input{
+      background:$basecolor;
+    input{
+      width:85%;
+      background:$basecolor;
+      margin-bottom:0;
+    }
+  }
+
+  .sidebar-menu{
+    display:flex;//flexコンテナの宣言
+    flex-wrap:wrap;//収まらない場合は改行する
+    justify-content:space-between;//flexアイテムは最初と最後のアイテムは端に、残りは等間隔で配置
+    background:$keycolor;
+    padding:15px;
+    //height:40px;
+    //height:auto;
+    align-items:center;
+    margin-top:15px;
+    cursor: pointer;
+  }
+  .sidebar-submenu{
+    display:none;//初期値非表示
+    li {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      background:$sub-basecolor;
+    }
+    li a{  
+      border-bottom: 1px solid #eee;
+      font-size: 14px;
+      text-decoration: none;
+      display:flex;//flexコンテナの宣言
+      flex-wrap:wrap;//収まらない場合は改行する
+      justify-content:space-between;//flexアイテムは最初と最後のアイテムは端に、残りは等間隔で配置
+      padding:15px;
+      align-items:center;
+      
+      
+    }
+  }
+  .items{
+    padding:10px;
+    margin-bottom:20px;
+    background:$sub-basecolor;
+  }
+  
+  #about,
+  #shop-info{
+      .items .item-img img{
+        width:100%;
+      }
+    
+    //スマートフォン対応----------------------------
+    @media (max-width: 550px) {
+      .items{
+      display:flex;//flexコンテナの宣言
+      flex-wrap:nowrap;//改行しない
+      //justify-content: space-between;//flexアイテムは最初と最後のアイテムは端に、残りは等間隔で配置
+        
+      }
+      .item-img{
+        width:45%;
+        margin-right:10px;
+      }
+
+      .items-info{
+        //padding:10px;
+        width:55%;
+      }
+      
+      .more-btn{
+        width:70%; 
+      }
+      
+    }
+  }
+}
+  
+/*
+product-img-area
+************************************************/
+#product-area{
+  background:$sub-basecolor;
+  padding:30px;
+  h2{
+    @include fontsize(18);
+  }
+  
+  .container{
+    width:100%;
+    //margin-left:0;
+    //margin-right:0;
+  }
+  
+
+  .product-name-area{
+    display:flex;
+    justify-content:space-between;//flexアイテムは最初と最後のアイテムは端に、残りは等間隔で配置
+    padding-bottom: 20px;
+    border-bottom: 1px solid $keycolor2;    
+    margin-bottom: 20px;
+  }
+  .product-img-area{
+    display:flex;
+    flex-wrap:wrap;//収まらない場合は改行する
+    justify-content:space-between;//flexアイテムは最初と最後のアイテムは端に、残りは等間隔で配置
+    padding-bottom: 20px;
+    border-bottom: 1px solid $keycolor2;    
+    margin-bottom: 20px;
+    
+  }
+  .product-img-main{
+    width:60%;//76%; ****
+    //スマートフォン対応----------------------------
+    @media (max-width: 550px) {
+      width:100%;//76%; ****
+    }
+    
+  }
+  .product-img-sub{
+    display:flex;
+    justify-content:space-between;//flexアイテムは最初と最後のアイテムは端に、残りは等間隔で配置
+    flex-wrap:wrap;//収まらない場合は改行する
+    width:24%; //***
+    padding-left:5px;
+    padding-right:5px;
+    //スマートフォン対応----------------------------
+    @media (max-width: 550px) {
+      width:100%;
+      padding-left:0;
+      padding-right:0;
+    }
+    
+    div.items{
+      width:48%;
+      height:20%;
+      //スマートフォン対応----------------------------
+      @media (max-width: 550px) {
+        width:18%;
+        height:auto;
+        //padding-left:5px;
+      }
+      
+      
+    }
+    
+    img{
+      //width:auto;
+      //height:auto;
+    }
+    #product-img-sub1,
+    #product-img-sub2,
+    #product-img-sub3,
+    #product-img-sub4,
+    #product-img-sub5{
+      cursor: pointer;
+    }
+    
+  }
+
+  .product-color-area{
+    margin-bottom:25px;
+  
+    .tbl-color{
+      width:100%;
+     //border: 1px solid #f00;//$keycolor;
+        
+      th{
+        text-align: center;
+        vertical-align: middle;
+        color: #333;
+        background-color: $basecolor;//keycolor2;
+        border: 1px solid $keycolor;
+      }
+      td{
+        text-align: center;
+        vertical-align: middle;
+        //color: #333;
+        //background-color: $keycolor2;
+        border: 1px solid $keycolor;
+      }
+    }
+    
+    .product-color-price-area2{
+      border-bottom: 1px solid $keycolor2;    
+    }
+    .product-color-price,
+    .product-color-quantity{
+      border-top: 1px solid $keycolor2;    
+      height:60px;
+      //vertical-align: middle;
+      padding-top:15px;
+      img{
+        margin-right:20px;
+      }
+      input{
+        width: 50%;
+      }
+      .price-value{
+        @include fontsize(20);
+        color:$red-color;
+        font-style:italic;
+      }
+    }
+    .add-to-cart{
+      text-align:right;
+    }
+    
+    //スマートフォン対応----------------------------
+    @media (max-width: 550px) {
+      .product-color-quantity{
+        border-bottom: 1px solid $keycolor2; 
+        margin-bottom:10px;
+      }
+      .add-to-cart{
+        text-align:center;
+      }
+    }
+    
+  }
+  
+  .product-description{
+    h3{
+      border-bottom: 1px solid $keycolor2;
+    }
+    h4:before{
+      content:"■ ";
+      @include fontsize(20);
+    }
+    table{
+      width:100%;
+      margin-top:15px;
+     //border: 1px solid #f00;//$keycolor;
+        
+      th{
+        text-align: center;
+        vertical-align: middle;
+        color: #333;
+        background-color: $basecolor;//keycolor2;
+        border: 1px solid $keycolor;
+        width:25%;
+      }
+      td{
+        //text-align: center;
+        vertical-align: middle;
+        //color: #333;
+        //background-color: $keycolor2;
+        border: 1px solid $keycolor;
+      }
+    }
+      
+    
   }
 }
 
-/*
-main
-************************************************/
 
-.main{
-  
+
+/*
+footer
+************************************************/
+footer{
+  .items{
+//    height:50px;
+    margin-top:30px;
+    
+  }
+  .goto-toppage{
+    margin-top:50px;
+    border-bottom:1px solid $keycolor;
+    text-align: right;
+    @media (max-width: 550px) {
+      text-align: center;
+      
+      img{
+        width:30%
+      }
+      
+      
+      
+    }
+
+  }
+  .copyright{
+    @include fontsize(10);
+    color:#b8b4ac;
+    
+  }
 }
+
+
+//スマートフォン対応----------------------------
+  @media (max-width: 550px) {
+
+    .pc_navi {
+      display:none;
+    }
+    .for_pc{
+      display:none;
+    }
+}
+
+//PC用対応----------------------------
+  @media (min-width: 550px) {
+  
+    //非表示の設定
+    .sp_navi {
+      display:none;
+    }
+    .for_sp{
+      display:none;
+    }
+  }
