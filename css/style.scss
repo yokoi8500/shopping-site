@@ -24,17 +24,36 @@ $red-color:#9d1a2d;
   @include fontsize(12);
 }
 
-*{
+body{
+  @include fontsize(14); //for pc
+  //スマートフォン対応----------------------------
+  @media (max-width: 550px) {
+    @include fontsize(21); //for sp
+  }
+}
+div{
   box-sizing:border-box;
+}
+.container{
+  width:95%;
 }
 
 h3{
   @include fontsize(20);
+  //スマートフォン対応----------------------------
+  @media (max-width: 550px) {
+    @include fontsize(32); //for sp
+  }
   color:$keycolor;
   //font-weight:bold;
 }
 h4{
   @include fontsize(18);
+  //スマートフォン対応----------------------------
+  @media (max-width: 550px) {
+    @include fontsize(24); //for sp
+  }
+  margin-bottom:5px;// for sp
   color:$keycolor;
   //font-weight:bold;
 }
@@ -126,10 +145,15 @@ header{
     .logo{
       //background:#f00;
       //diaplay:inline;
+      margin-top:5px;
       padding-bottom:0px;
+      img{
+        width:40%;
+      }
     }
     h1{
       text-align: center;
+      margin-bottom:10px;
     }
     
     .sp_navi_li{
@@ -189,7 +213,7 @@ breadcrumb
   padding-bottom:10px;
   margin-bottom:10px;
   h1{
-    @include fontsize(15);
+   @include fontsize(22); //for sp
     margin-top:auto;
     margin-bottom:auto;
   }
@@ -214,6 +238,11 @@ curusel
   
   .owl-dot{
     width:25px;
+    //スマートフォン対応----------------------------
+    @media (max-width: 550px) {
+      width :10%; 
+    }
+    
     height:2px;
     background:$keycolor;
     padding:0px;
@@ -229,29 +258,61 @@ new-items
 ************************************************/
 
 #new-items ,
-#popular{
+#popular,
+#guide{
   .container{
     background:$basecolor;
     padding:0px;
-    //display:block;
-    
-    display:flex;//flexコンテナの宣言
-    flex-wrap:wrap;//収まらない場合は改行する
-    justify-content: space-between;//flexアイテムは最初と最後のアイテムは端に、残りは等間隔で配置
+
     margin:0 0 20px 0;
     width:100%;
   } 
   .item-title h2{
-    height:30px;
+      height:60px;
       margin-left:auto;
       margin-right:auto;
       margin-top:20px;
-      margin-bottomtop:10px;
+      margin-bottom:10px;
       text-align:center;
-    .img{
+    img{
+    //スマートフォン対応----------------------------
+    @media (max-width: 550px) {
+      height:40%;
+    }
     }
   }
+  .item-price{
+    margin-bottom:5px;
+  }
 
+  
+}
+
+#new-item-navi{
+  display:flex;//flexコンテナの宣言
+  flex-wrap:nowrap;//改行しない
+  justify-content: space-between;//flexアイテムは最初と最後のアイテムは端に、残りは等間隔で配置
+  .new-item-btn{
+    //スマートフォン対応----------------------------
+    @media (max-width: 550px) {
+      width :40%; 
+    }
+  }
+  img{
+    //width:200px;
+    width:100%;
+  }
+}
+
+
+#new-items ,
+#popular{
+  .container{
+  
+    display:flex;//flexコンテナの宣言
+    flex-wrap:wrap;//収まらない場合は改行する
+    justify-content: space-between;//flexアイテムは最初と最後のアイテムは端に、残りは等間隔で配置
+  }
   .items{
     width:50%;
     //min-height:300px;
@@ -272,35 +333,10 @@ new-items
   
 }
 
-#new-item-navi{
-  display:flex;//flexコンテナの宣言
-  flex-wrap:nowrap;//改行しない
-  justify-content: space-between;//flexアイテムは最初と最後のアイテムは端に、残りは等間隔で配置
-}
-
-
-
 
 #guide{
-  .container{
-    background:$basecolor;
-    padding:0;
 
-    margin:0 0 20px 0;
-    width:100%;
-  } 
   
-  
-  .item-title h2{
-    height:30px;
-      margin-left:auto;
-      margin-right:auto;
-      margin-top:20px;
-      margin-bottomtop:10px;
-      text-align:center;
-    .img{
-    }
-  }
   .items{
     //width:33%;
     border:1px solid $basecolor;
@@ -318,7 +354,13 @@ new-items
   }
   h4:before{
     content:"■ ";
-    @include fontsize(20);
+    @include fontsize(30);
+  }
+  .img-otodoke{
+    width:70%;
+  }
+  .img-cards{
+    width:100%;
   }
   
 }
@@ -331,7 +373,8 @@ sidebar
   #search{
     background:$sub-basecolor;
     margin-bottom:10px;
-    padding:15px 15px;
+    padding:40px 5px;
+    padding:20px 5px;
   }
   .search-input{
       background:$basecolor;
@@ -348,11 +391,32 @@ sidebar
     justify-content:space-between;//flexアイテムは最初と最後のアイテムは端に、残りは等間隔で配置
     background:$keycolor;
     padding:15px;
-    //height:40px;
+    height:50px;  // for pc
+    //スマートフォン対応----------------------------
+    @media (max-width: 550px) {
+      height:85px;  // for sp
+    }
+
     //height:auto;
     align-items:center;
     margin-top:15px;
     cursor: pointer;
+    img{
+      height:10px;//25%;
+      //スマートフォン対応----------------------------
+      @media (max-width: 550px) {
+        height:25%;
+      }
+      //max-width:auto;
+    }
+    .img-l{  //やや大きくする
+      //height:40%;
+      height:15px;//25%;
+      //スマートフォン対応----------------------------
+      @media (max-width: 550px) {
+        height:40%;
+      }
+    }
   }
   .sidebar-submenu{
     display:none;//初期値非表示
@@ -361,10 +425,16 @@ sidebar
       margin: 0;
       padding: 0;
       background:$sub-basecolor;
+      height:30px;  // for pc
+      //スマートフォン対応----------------------------
+      @media (max-width: 550px) {
+        height:70px;  // for sp
+      }
+      padding-top:20px;
+      border-bottom: 1px solid $basecolor;
     }
     li a{  
-      border-bottom: 1px solid #eee;
-      font-size: 14px;
+      //@include fontsize(24);
       text-decoration: none;
       display:flex;//flexコンテナの宣言
       flex-wrap:wrap;//収まらない場合は改行する
@@ -418,9 +488,10 @@ product-img-area
 ************************************************/
 #product-area{
   background:$sub-basecolor;
-  padding:30px;
+  padding:30px 10px 20px 10px;
   h2{
-    @include fontsize(18);
+    @include fontsize(28);
+    margin-bottom:5px;// for sp
   }
   
   .container{
@@ -431,11 +502,18 @@ product-img-area
   
 
   .product-name-area{
-    display:flex;
-    justify-content:space-between;//flexアイテムは最初と最後のアイテムは端に、残りは等間隔で配置
+    //PC用対応----------------------------
+    @media (min-width: 550px) {
+      display:flex;
+      justify-content:space-between;//flexアイテムは最初と最後のアイテムは端に、残りは等間隔で配置
+    }
     padding-bottom: 20px;
     border-bottom: 1px solid $keycolor2;    
     margin-bottom: 20px;
+  }
+  .product-code{
+    color:$keycolor;
+    @include fontsize(20);
   }
   .product-img-area{
     display:flex;
@@ -498,6 +576,10 @@ product-img-area
   .product-color-area{
     margin-bottom:25px;
   
+    img{
+      height:25px;// for sp
+    }
+  
     .tbl-color{
       width:100%;
      //border: 1px solid #f00;//$keycolor;
@@ -515,6 +597,12 @@ product-img-area
         //color: #333;
         //background-color: $keycolor2;
         border: 1px solid $keycolor;
+        input{
+          //@include fontsize(50);
+          margin-top:15px;
+          height:25px;
+          width:25px;
+        }
       }
     }
     
@@ -535,12 +623,22 @@ product-img-area
       }
       .price-value{
         @include fontsize(20);
+        @include fontsize(44); //for sp
         color:$red-color;
+        font-style:italic;
+      }
+      .price-value{
+        @include fontsize(20);
+        @include fontsize(28); //for sp
         font-style:italic;
       }
     }
     .add-to-cart{
       text-align:right;
+      img{
+        width:70%;
+        height:auto;
+      }
     }
     
     //スマートフォン対応----------------------------
@@ -562,7 +660,7 @@ product-img-area
     }
     h4:before{
       content:"■ ";
-      @include fontsize(20);
+      @include fontsize(30);
     }
     table{
       width:100%;
@@ -583,6 +681,7 @@ product-img-area
         //color: #333;
         //background-color: $keycolor2;
         border: 1px solid $keycolor;
+        padding:20px;
       }
     }
       
@@ -602,7 +701,8 @@ footer{
     
   }
   .goto-toppage{
-    margin-top:50px;
+    margin-top:40px;
+    padding-bottom:40px;
     border-bottom:1px solid $keycolor;
     text-align: right;
     @media (max-width: 550px) {
@@ -616,6 +716,14 @@ footer{
       
     }
 
+  }
+  .footer-link{
+    
+  @include fontsize(16);// for pc
+  //スマートフォン対応----------------------------
+  @media (max-width: 550px) {
+    @include fontsize(20);// for sp
+  }
   }
   .copyright{
     @include fontsize(10);
@@ -647,3 +755,14 @@ footer{
       display:none;
     }
   }
+  
+/*   
+ .text-overflow{
+  color:#f00;
+  //white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -o-text-overflow: ellipsis; 
+  height:50px;
+}
+*/
