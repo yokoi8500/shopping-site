@@ -38,6 +38,12 @@ div{
   width:95%;
 }
 
+/* 初期化し損ねている余計な余白を解除 */
+form,h1,h2,h3,h4,dl,dt,dd,ul,li{
+	margin:0; padding:0;
+}
+
+
 h3{
   @include fontsize(20);
   //スマートフォン対応----------------------------
@@ -206,14 +212,35 @@ header{
 breadcrumb
 ************************************************/
 #breadcrumb{
+  //  vartical-align:middle;
+  //vertical-align: bottom;
+  //vertical-align: middle;
+  color:$keycolor;
+
   background:$keycolor2;
   display:flex;
-  //align-items:         baseline;  //パンくずリストのベースラインをそろえる
+  align-items:         center;//baseline;  //パンくずリストのベースラインをそろえる
   padding-top:10px;
   padding-bottom:10px;
   margin-bottom:10px;
+  //スマートフォン対応----------------------------
+  @media (max-width: 550px) {
+    @include fontsize(18); //for sp
+  }
+  
+  a{
+     color:$keycolor;
+    //スマートフォン対応----------------------------
+    @media (max-width: 550px) {
+      @include fontsize(18); //for sp
+    }
+  }
   h1{
-   @include fontsize(22); //for sp
+   @include fontsize(14); //for sp
+    //スマートフォン対応----------------------------
+    @media (max-width: 550px) {
+      @include fontsize(18); //for sp
+    }
     margin-top:auto;
     margin-bottom:auto;
   }
@@ -225,6 +252,8 @@ breadcrumb
   }
   img.img-home-icon{
     margin-right:10px;
+    height:15px;
+    //height:auto;
   }
 }
 
@@ -379,8 +408,9 @@ sidebar
   .search-input{
       background:$basecolor;
     input{
-      width:85%;
-      background:$basecolor;
+      //width:85%;
+      background:eeeeee;
+      //background:$basecolor;
       margin-bottom:0;
     }
   }
@@ -446,7 +476,7 @@ sidebar
     }
   }
   .items{
-    padding:10px;
+    padding:15px;
     margin-bottom:20px;
     background:$sub-basecolor;
   }
@@ -488,7 +518,13 @@ product-img-area
 ************************************************/
 #product-area{
   background:$sub-basecolor;
-  padding:30px 10px 20px 10px;
+  
+  padding:30px 60px 20px 60px;
+  //スマートフォン対応----------------------------
+  @media (max-width: 550px) {
+    padding:30px 10px 20px 10px;
+  }
+
   h2{
     @include fontsize(28);
     margin-bottom:5px;// for sp
@@ -525,7 +561,7 @@ product-img-area
     
   }
   .product-img-main{
-    width:60%;//76%; ****
+    width:70%;//60%;//76%; ****
     //スマートフォン対応----------------------------
     @media (max-width: 550px) {
       width:100%;//76%; ****
@@ -536,7 +572,7 @@ product-img-area
     display:flex;
     justify-content:space-between;//flexアイテムは最初と最後のアイテムは端に、残りは等間隔で配置
     flex-wrap:wrap;//収まらない場合は改行する
-    width:24%; //***
+    width:29%;//24%; //***
     padding-left:5px;
     padding-right:5px;
     //スマートフォン対応----------------------------
@@ -587,7 +623,8 @@ product-img-area
       th{
         text-align: center;
         vertical-align: middle;
-        color: #333;
+        //color: #333;
+        color:$keycolor;
         background-color: $basecolor;//keycolor2;
         border: 1px solid $keycolor;
       }
@@ -670,7 +707,8 @@ product-img-area
       th{
         text-align: center;
         vertical-align: middle;
-        color: #333;
+        //color: #333;
+        color:$keycolor;
         background-color: $basecolor;//keycolor2;
         border: 1px solid $keycolor;
         width:25%;
@@ -766,3 +804,30 @@ footer{
   height:50px;
 }
 */
+
+input[type="search"]{
+	margin:auto;
+	padding:13px 15% 13px 3%;
+	width:82%;
+	height:34px;
+	border:none;
+	background:#eee;
+	font-size:1.1rem;
+	position:relative; /* 入力部分の上に検索ボタンを置くためのおまじない */
+	z-index:0; /* 入力部分の上に検索ボタンを置くためのおまじない：重ね順を定義 */
+	-webkit-appearance: textfield;
+	-moz-box-sizing: content-box;
+	-webkit-box-sizing: content-box;
+	box-sizing: content-box;
+	border:none;
+  @include fontsize(20);
+	
+}
+input[type="image"]{
+	float:right;
+	margin:-42px 12px 0 0;
+	position:relative; /* 入力部分の上に検索ボタンを置くためのおまじない */
+	z-index:100; /* 入力部分の上に検索ボタンを置くためのおまじない：重ね順を定義 */
+	height:22px;
+//	width:18px;
+}

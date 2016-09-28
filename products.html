@@ -21,7 +21,7 @@
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/skeleton.css">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="./css/style.css">
 
   <!-- Favicon
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
@@ -288,11 +288,13 @@
         <div id="sidebar" class="three columns">
             
             <div id="search">
-                <img class="for_pc" src="images/top/itemserch.png" alt="item sertch"  />
-                <div class="search-input">
-                    <input type="search" name="search-value" placeholder="Search"></input>
-                    <img  src="images/top/search_icon.png" alt="sertch"  />
-                </div>
+              <img class="for_pc" src="images/top/itemserch.png" alt="item sertch"  />
+              <div class="search-input">
+                <dl>
+                  <dt><input type="search" id="SEARCH_TXT" placeholder="Search..." value="" name="search" size="30" maxlength="255"></dt>
+                  <dd><input type="image" src="images/top/search_icon.png"></dd>
+                </dl>
+              </div>
             </div>
             <!-- #search -->
             
