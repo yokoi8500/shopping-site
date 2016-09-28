@@ -442,8 +442,11 @@ product-img-area
     #product-area .product-color-area .add-to-cart {
       text-align: right; }
       #product-area .product-color-area .add-to-cart img {
-        width: 70%;
+        width: 100%;
         height: auto; }
+        @media (max-width: 550px) {
+          #product-area .product-color-area .add-to-cart img {
+            width: 70%; } }
     @media (max-width: 550px) {
       #product-area .product-color-area .product-color-quantity {
         border-bottom: 1px solid #e2ddd4;
@@ -524,7 +527,7 @@ input[type="search"] {
   margin: auto;
   padding: 13px 15% 13px 3%;
   width: 82%;
-  height: 34px;
+  height: 20px;
   border: none;
   background: #eee;
   font-size: 1.1rem;
@@ -542,7 +545,7 @@ input[type="search"] {
 
 input[type="image"] {
   float: right;
-  margin: -42px 12px 0 0;
+  margin: -32px 12px 0 0;
   position: relative;
   /* 入力部分の上に検索ボタンを置くためのおまじない */
   z-index: 100;
